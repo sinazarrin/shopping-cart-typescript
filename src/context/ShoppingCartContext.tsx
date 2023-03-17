@@ -65,7 +65,9 @@ export const ShoppingCartProvider = ({
   };
 
   const removeFromCart = (id: number) => {
-
+    setCartItems(currItem => {
+      return currItem.filter(item => item.id !== id)
+    })
   };
 
   return (
