@@ -49,11 +49,23 @@ export const ShoppingCartProvider = ({
   };
 
   const decreaseCartQuantity = (id: number) => {
-    
+    setCartItems(currItem => {
+      if (currItem.find(item => item.id === id) == null) {
+        return currItem.filter(item => item.id !== id)
+      }else{
+        return currItem.map(item => {
+          if (item.id === id) {
+            return {...item, quantity: item.quantity - 1}
+          }else{
+            return item
+          }
+        })
+      }
+    })
   };
 
   const removeFromCart = (id: number) => {
-    
+
   };
 
   return (
